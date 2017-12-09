@@ -100,6 +100,11 @@ class Branca:
 
 class MultiBranca:
 
+    @classmethod
+    def from_token(cls, token, password, load):
+        data = Branca(password).decrypt(token)
+        return cls(Branca(key) for key in load(data))
+
     def __init__(self, brancas):
         brancas = list(brancas)
         if not brancas:

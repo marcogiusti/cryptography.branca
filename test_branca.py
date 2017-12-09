@@ -29,6 +29,11 @@ class TestBranca(unittest.TestCase):
         b2 = branca.Branca(b'pwd2')
         self.assertRaises(branca.InvalidKey, b2.decrypt, token)
 
+    def test_short_token(self):
+        b = branca.Branca(b'pwd')
+        token = b.encrypt(DATA)
+        self.assertRaises(branca.InvalidToken, b.decrypt, token[:36])
+
 
 class TestMultiBranca(unittest.TestCase):
 
@@ -79,9 +84,6 @@ class TestMultiBranca(unittest.TestCase):
         sensible_data = pickle.dumps([pwd1, pwd2])
         token3 = b.encrypt(sensible_data)
         #
-        b2 = branca.Branca(b'pwd')
-        sensible_data = b2.decrypt(token3)
-        pwds = pickle.loads(sensible_data)
-        mb = branca.MultiBranca(branca.Branca(key) for key in pwds)
+        mb = branca.MultiBranca.from_token(token3, b'pwd', pickle.loads)
         self.assertEqual(mb.decrypt(token1), DATA1)
         self.assertEqual(mb.decrypt(token2), DATA2)
