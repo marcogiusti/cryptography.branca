@@ -38,7 +38,10 @@ from cryptography.hazmat.primitives import constant_time, hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 
-__all__ = ['__version__', 'Branca', 'MultiBranca', 'MIN_HASH_ITERATIONS']
+__all__ = [
+    '__version__', 'Branca', 'MultiBranca', 'InvalidToken', 'InvalidKey',
+    'MIN_HASH_ITERATIONS'
+]
 __version__ = '0.1'
 
 
