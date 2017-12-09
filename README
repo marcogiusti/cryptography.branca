@@ -2,7 +2,7 @@
 cryptography.branca
 ===================
 
-cryptography.branca is a think layer on top of cryptography.fernet_ that
+cryptography.branca is a thin layer on top of cryptography.fernet_ that
 uses passwords and not keys as secret. The key is derived from the
 password with a key derivation function.
 
