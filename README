@@ -1,0 +1,20 @@
+===================
+cryptography.branca
+===================
+
+cryptography.branca is a think layer on top of cryptography.fernet_ that
+uses passwords and not keys as secret. The key is derived from the
+password with a key derivation function.
+
+To install the package use pip::
+
+   $ pip install --user cryptography.branca
+
+To run the tests::
+
+   $ python -m unittest test_branca
+
+
+.. _cryptography.fernet: https://cryptography.io/en/latest/fernet/
+
+.. vim: ft=rst:tw=72
